@@ -77,6 +77,11 @@ test/
 
 # Docs research/analysis (internal use, not for distribution)
 docs/research/
+docs/WEB_API_TESTS_STATUS.md
+docs/WEB_PLATFORMS_RESEARCH.md
+
+# Local commit notes
+COMMIT_SUMMARY.md
 
 # Local untracked files
 .local/
