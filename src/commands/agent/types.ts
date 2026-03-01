@@ -76,4 +76,6 @@ export type AgentCommandOpts = {
   inputProvenance?: InputProvenance;
   /** Per-call stream param overrides (best-effort). */
   streamParams?: AgentStreamParams;
+  /** Model override in "provider/model" format (e.g., "manus-api/manus-1.6"). Used for gateway HTTP endpoint routing. */
+  model?: string;
 };

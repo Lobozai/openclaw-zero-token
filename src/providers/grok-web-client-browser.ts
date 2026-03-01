@@ -313,6 +313,24 @@ export class GrokWebClientBrowser {
           }
         }
 
+        // 如果没有现有对话，创建一个新对话
+        if (!convId) {
+          console.log("[Grok] 没有现有对话，创建新对话...");
+          const createRes = await fetch("https://grok.com/rest/app-chat/conversations", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({}),
+          });
+          if (createRes.ok) {
+            const createData = await createRes.json();
+            convId = createData?.conversationId ?? createData?.id ?? null;
+            if (convId) {
+              console.log(`[Grok] 新对话创建成功: ${convId}`);
+            }
+          }
+        }
+
         if (!convId) {
           throw new Error(
             `需要 conversationId。当前页面: ${window.location.href}。请先在 grok.com 中打开或新建一个对话（点击 New chat），再重试。`
@@ -424,11 +442,27 @@ export class GrokWebClientBrowser {
       `[Grok Web Browser] NDJSON sample:\n${fullText.slice(0, 1200)}${fullText.length > 1200 ? "\n...(truncated)" : ""}`
     );
 
+    // Parse NDJSON lines and extract content
+    const lines = fullText.split("\n").filter((line) => line.trim());
+    const parsedChunks: string[] = [];
+    for (const line of lines) {
+      try {
+        const data = JSON.parse(line);
+        const content = data.contentDelta ?? data.textDelta ?? data.content ?? data.text ?? data.delta;
+        if (content) {
+          parsedChunks.push(content);
+        }
+      } catch {
+        // Skip unparseable lines
+      }
+    }
+
     let index = 0;
     return new ReadableStream({
       pull(controller) {
-        if (index < apiResult.chunks.length) {
-          controller.enqueue(new Uint8Array(apiResult.chunks[index]));
+        if (index < parsedChunks.length) {
+          const line = JSON.stringify({ contentDelta: parsedChunks[index] }) + "\n";
+          controller.enqueue(new TextEncoder().encode(line));
           index++;
         } else {
           controller.close();

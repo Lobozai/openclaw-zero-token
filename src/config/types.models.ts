@@ -14,8 +14,7 @@ export type ModelApi =
   | "kimi-web"
   | "gemini-web"
   | "grok-web"
-  | "z-web"
-  | "manus-web"
+  | "glm-web"
   | "manus-api";
 
 export type ModelCompatConfig = {

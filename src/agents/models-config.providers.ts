@@ -243,17 +243,6 @@ const Z_WEB_DEFAULT_COST = {
   cacheWrite: 0,
 };
 
-export const MANUS_WEB_BASE_URL = "https://manus.im";
-export const MANUS_WEB_DEFAULT_MODEL_ID = "manus-1";
-const MANUS_WEB_DEFAULT_CONTEXT_WINDOW = 32000;
-const MANUS_WEB_DEFAULT_MAX_TOKENS = 4096;
-const MANUS_WEB_DEFAULT_COST = {
-  input: 0,
-  output: 0,
-  cacheRead: 0,
-  cacheWrite: 0,
-};
-
 const NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1";
 const NVIDIA_DEFAULT_MODEL_ID = "nvidia/llama-3.1-nemotron-70b-instruct";
 const NVIDIA_DEFAULT_CONTEXT_WINDOW = 131072;
@@ -1100,11 +1089,11 @@ export async function buildZWebProvider(params?: {
 }): Promise<ProviderConfig> {
   return {
     baseUrl: Z_WEB_BASE_URL,
-    api: "z-web",
+    api: "glm-web",
     models: [
       {
         id: "glm-4-plus",
-        name: "GLM-4 Plus (Web)",
+        name: "glm-4 Plus (Web)",
         reasoning: false,
         input: ["text"],
         cost: Z_WEB_DEFAULT_COST,
@@ -1113,32 +1102,12 @@ export async function buildZWebProvider(params?: {
       },
       {
         id: "glm-4-think",
-        name: "GLM-4 Think (Web)",
+        name: "glm-4 Think (Web)",
         reasoning: true,
         input: ["text"],
         cost: Z_WEB_DEFAULT_COST,
         contextWindow: Z_WEB_DEFAULT_CONTEXT_WINDOW,
         maxTokens: Z_WEB_DEFAULT_MAX_TOKENS,
-      },
-    ],
-  };
-}
-
-export async function buildManusWebProvider(params?: {
-  apiKey?: string;
-}): Promise<ProviderConfig> {
-  return {
-    baseUrl: MANUS_WEB_BASE_URL,
-    api: "manus-web",
-    models: [
-      {
-        id: "manus-1",
-        name: "Manus 1 (Web)",
-        reasoning: false,
-        input: ["text"],
-        cost: MANUS_WEB_DEFAULT_COST,
-        contextWindow: MANUS_WEB_DEFAULT_CONTEXT_WINDOW,
-        maxTokens: MANUS_WEB_DEFAULT_MAX_TOKENS,
       },
     ],
   };
@@ -1480,21 +1449,12 @@ export async function resolveImplicitProviders(params: {
   };
 
   const zWebKey =
-    resolveEnvApiKeyVarName("z-web") ??
-    resolveApiKeyFromProfiles({ provider: "z-web", store: authStore });
+    resolveEnvApiKeyVarName("glm-web") ??
+    resolveApiKeyFromProfiles({ provider: "glm-web", store: authStore });
 
-  providers["z-web"] = {
+  providers["glm-web"] = {
     ...(await buildZWebProvider({ apiKey: zWebKey })),
     apiKey: zWebKey,
-  };
-
-  const manusWebKey =
-    resolveEnvApiKeyVarName("manus-web") ??
-    resolveApiKeyFromProfiles({ provider: "manus-web", store: authStore });
-
-  providers["manus-web"] = {
-    ...(await buildManusWebProvider({ apiKey: manusWebKey })),
-    apiKey: manusWebKey,
   };
 
   const manusApiKey =

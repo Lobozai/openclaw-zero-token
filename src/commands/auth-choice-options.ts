@@ -84,7 +84,7 @@ const AUTH_CHOICE_GROUP_DEFS: {
   },
   {
     value: "zai",
-    label: "Z.AI",
+    label: "GLM Web",
     hint: "GLM Coding Plan / Global / CN",
     choices: ["zai-coding-global", "zai-coding-cn", "zai-global", "zai-cn"],
   },
@@ -221,16 +221,16 @@ const AUTH_CHOICE_GROUP_DEFS: {
     choices: ["grok-web"],
   },
   {
-    value: "z-web",
-    label: "Z Web",
+    value: "glm-web",
+    label: "GLM Web",
     hint: "Browser-based authentication",
-    choices: ["z-web"],
+    choices: ["glm-web"],
   },
   {
     value: "manus",
     label: "Manus",
-    hint: "API key or browser",
-    choices: ["manus-api-key", "manus-web"],
+    hint: "API key",
+    choices: ["manus-api-key"],
   },
 ];
 
@@ -424,7 +424,7 @@ const BASE_AUTH_CHOICE_OPTIONS: ReadonlyArray<AuthChoiceOption> = [
     hint: "Access xAI Grok via browser",
   },
   {
-    value: "z-web",
+    value: "glm-web",
     label: "Z Browser",
     hint: "Access Z.AI via browser",
   },
@@ -432,11 +432,6 @@ const BASE_AUTH_CHOICE_OPTIONS: ReadonlyArray<AuthChoiceOption> = [
     value: "manus-api-key",
     label: "Manus API",
     hint: "Official Manus API (Credit-based)",
-  },
-  {
-    value: "manus-web",
-    label: "Manus Browser",
-    hint: "Access Manus via browser",
   },
   { value: "custom-api-key", label: "Custom Provider" },
 ];

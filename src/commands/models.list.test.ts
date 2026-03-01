@@ -121,7 +121,7 @@ describe("models list/status", () => {
   const ZAI_MODEL = {
     provider: "zai",
     id: "glm-4.7",
-    name: "GLM-4.7",
+    name: "glm-4.7",
     input: ["text"],
     baseUrl: "https://api.z.ai/v1",
     contextWindow: 128000,

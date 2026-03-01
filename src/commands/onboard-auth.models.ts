@@ -89,9 +89,9 @@ type MinimaxCatalogId = keyof typeof MINIMAX_MODEL_CATALOG;
 
 const ZAI_MODEL_CATALOG = {
   "glm-5": { name: "GLM-5", reasoning: true },
-  "glm-4.7": { name: "GLM-4.7", reasoning: true },
-  "glm-4.7-flash": { name: "GLM-4.7 Flash", reasoning: true },
-  "glm-4.7-flashx": { name: "GLM-4.7 FlashX", reasoning: true },
+  "glm-4.7": { name: "glm-4.7", reasoning: true },
+  "glm-4.7-flash": { name: "glm-4.7 Flash", reasoning: true },
+  "glm-4.7-flashx": { name: "glm-4.7 FlashX", reasoning: true },
 } as const;
 
 type ZaiCatalogId = keyof typeof ZAI_MODEL_CATALOG;

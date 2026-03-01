@@ -463,10 +463,10 @@ export async function setZWebCookie(
   agentDir?: string,
 ) {
   upsertAuthProfile({
-    profileId: "z-web:default",
+    profileId: "glm-web:default",
     credential: {
       type: "api_key",
-      provider: "z-web",
+      provider: "glm-web",
       key: options.cookie,
     },
     agentDir: resolveAuthAgentDir(agentDir),
@@ -485,17 +485,3 @@ export async function setManusApiKey(key: string, agentDir?: string) {
   });
 }
 
-export async function setManusWebCookie(
-  options: { cookie: string },
-  agentDir?: string,
-) {
-  upsertAuthProfile({
-    profileId: "manus-web:default",
-    credential: {
-      type: "api_key",
-      provider: "manus-web",
-      key: options.cookie,
-    },
-    agentDir: resolveAuthAgentDir(agentDir),
-  });
-}

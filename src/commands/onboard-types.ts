@@ -56,8 +56,7 @@ export type AuthChoice =
   | "kimi-web"
   | "gemini-web"
   | "grok-web"
-  | "z-web"
-  | "manus-web"
+  | "glm-web"
   | "manus-api-key"
   | "custom-api-key"
   | "skip";
@@ -95,8 +94,7 @@ export type AuthChoiceGroupId =
   | "kimi-web"
   | "gemini-web"
   | "grok-web"
-  | "z-web"
-  | "manus-web"
+  | "glm-web"
   | "manus-api"
   | "custom";
 export type GatewayAuthChoice = "token" | "password";

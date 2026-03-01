@@ -19,8 +19,7 @@ export const ModelApiSchema = z.union([
   z.literal("kimi-web"),
   z.literal("gemini-web"),
   z.literal("grok-web"),
-  z.literal("z-web"),
-  z.literal("manus-web"),
+  z.literal("glm-web"),
   z.literal("manus-api"),
 ]);
 

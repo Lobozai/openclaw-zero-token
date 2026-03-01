@@ -670,3 +670,143 @@ export async function applyQwenWebConfig(cfg: OpenClawConfig): Promise<OpenClawC
   return applyAgentDefaultModelPrimary(next, QWEN_WEB_DEFAULT_MODEL_REF);
 }
 
+// Kimi Web
+const KIMI_WEB_DEFAULT_MODEL_ID = "moonshot-v1-32k";
+const KIMI_WEB_DEFAULT_MODEL_REF = `kimi-web/${KIMI_WEB_DEFAULT_MODEL_ID}`;
+const KIMI_WEB_BASE_URL = "https://www.kimi.com";
+
+export async function applyKimiWebProviderConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[KIMI_WEB_DEFAULT_MODEL_REF] = {
+    ...models[KIMI_WEB_DEFAULT_MODEL_REF],
+    alias: models[KIMI_WEB_DEFAULT_MODEL_REF]?.alias ?? "Kimi 32K",
+  };
+  const { buildKimiWebProvider } = await import("../agents/models-config.providers.js");
+  const defaultProvider = await buildKimiWebProvider();
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "kimi-web",
+    api: "kimi-web",
+    baseUrl: defaultProvider.baseUrl ?? KIMI_WEB_BASE_URL,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: KIMI_WEB_DEFAULT_MODEL_ID,
+  });
+}
+
+export async function applyKimiWebConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const next = await applyKimiWebProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, KIMI_WEB_DEFAULT_MODEL_REF);
+}
+
+// ChatGPT Web
+const CHATGPT_WEB_DEFAULT_MODEL_ID = "gpt-4";
+const CHATGPT_WEB_DEFAULT_MODEL_REF = `chatgpt-web/${CHATGPT_WEB_DEFAULT_MODEL_ID}`;
+const CHATGPT_WEB_BASE_URL = "https://chatgpt.com";
+
+export async function applyChatGPTWebProviderConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[CHATGPT_WEB_DEFAULT_MODEL_REF] = {
+    ...models[CHATGPT_WEB_DEFAULT_MODEL_REF],
+    alias: models[CHATGPT_WEB_DEFAULT_MODEL_REF]?.alias ?? "GPT-4",
+  };
+  const { buildChatGPTWebProvider } = await import("../agents/models-config.providers.js");
+  const defaultProvider = await buildChatGPTWebProvider();
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "chatgpt-web",
+    api: "chatgpt-web",
+    baseUrl: defaultProvider.baseUrl ?? CHATGPT_WEB_BASE_URL,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: CHATGPT_WEB_DEFAULT_MODEL_ID,
+  });
+}
+
+export async function applyChatGPTWebConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const next = await applyChatGPTWebProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, CHATGPT_WEB_DEFAULT_MODEL_REF);
+}
+
+// Gemini Web
+const GEMINI_WEB_DEFAULT_MODEL_ID = "gemini-pro";
+const GEMINI_WEB_DEFAULT_MODEL_REF = `gemini-web/${GEMINI_WEB_DEFAULT_MODEL_ID}`;
+const GEMINI_WEB_BASE_URL = "https://gemini.google.com";
+
+export async function applyGeminiWebProviderConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[GEMINI_WEB_DEFAULT_MODEL_REF] = {
+    ...models[GEMINI_WEB_DEFAULT_MODEL_REF],
+    alias: models[GEMINI_WEB_DEFAULT_MODEL_REF]?.alias ?? "Gemini Pro",
+  };
+  const { buildGeminiWebProvider } = await import("../agents/models-config.providers.js");
+  const defaultProvider = await buildGeminiWebProvider();
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "gemini-web",
+    api: "gemini-web",
+    baseUrl: defaultProvider.baseUrl ?? GEMINI_WEB_BASE_URL,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: GEMINI_WEB_DEFAULT_MODEL_ID,
+  });
+}
+
+export async function applyGeminiWebConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const next = await applyGeminiWebProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, GEMINI_WEB_DEFAULT_MODEL_REF);
+}
+
+// Grok Web
+const GROK_WEB_DEFAULT_MODEL_ID = "grok-2";
+const GROK_WEB_DEFAULT_MODEL_REF = `grok-web/${GROK_WEB_DEFAULT_MODEL_ID}`;
+const GROK_WEB_BASE_URL = "https://grok.com";
+
+export async function applyGrokWebProviderConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[GROK_WEB_DEFAULT_MODEL_REF] = {
+    ...models[GROK_WEB_DEFAULT_MODEL_REF],
+    alias: models[GROK_WEB_DEFAULT_MODEL_REF]?.alias ?? "Grok 2",
+  };
+  const { buildGrokWebProvider } = await import("../agents/models-config.providers.js");
+  const defaultProvider = await buildGrokWebProvider();
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "grok-web",
+    api: "grok-web",
+    baseUrl: defaultProvider.baseUrl ?? GROK_WEB_BASE_URL,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: GROK_WEB_DEFAULT_MODEL_ID,
+  });
+}
+
+export async function applyGrokWebConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const next = await applyGrokWebProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, GROK_WEB_DEFAULT_MODEL_REF);
+}
+
+// GLM Web (ChatGLM / Zhipu)
+const GLM_WEB_DEFAULT_MODEL_ID = "glm-4-plus";
+const GLM_WEB_DEFAULT_MODEL_REF = `glm-web/${GLM_WEB_DEFAULT_MODEL_ID}`;
+const GLM_WEB_BASE_URL = "https://chatglm.cn";
+
+export async function applyGlmWebProviderConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const models = { ...cfg.agents?.defaults?.models };
+  models[GLM_WEB_DEFAULT_MODEL_REF] = {
+    ...models[GLM_WEB_DEFAULT_MODEL_REF],
+    alias: models[GLM_WEB_DEFAULT_MODEL_REF]?.alias ?? "GLM-4 Plus",
+  };
+  const { buildZWebProvider } = await import("../agents/models-config.providers.js");
+  const defaultProvider = await buildZWebProvider();
+  return applyProviderConfigWithDefaultModels(cfg, {
+    agentModels: models,
+    providerId: "glm-web",
+    api: "glm-web",
+    baseUrl: defaultProvider.baseUrl ?? GLM_WEB_BASE_URL,
+    defaultModels: defaultProvider.models ?? [],
+    defaultModelId: GLM_WEB_DEFAULT_MODEL_ID,
+  });
+}
+
+export async function applyGlmWebConfig(cfg: OpenClawConfig): Promise<OpenClawConfig> {
+  const next = await applyGlmWebProviderConfig(cfg);
+  return applyAgentDefaultModelPrimary(next, GLM_WEB_DEFAULT_MODEL_REF);
+}
+

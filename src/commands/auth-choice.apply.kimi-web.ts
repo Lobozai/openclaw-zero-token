@@ -1,5 +1,6 @@
 import { loginKimiWeb } from "../providers/kimi-web-auth.js";
 import type { ApplyAuthChoiceParams, ApplyAuthChoiceResult } from "./auth-choice.apply.js";
+import { applyKimiWebConfig } from "./onboard-auth.config-core.js";
 import { setKimiWebCookie } from "./onboard-auth.credentials.js";
 import { openUrl } from "./onboard-helpers.js";
 
@@ -48,5 +49,6 @@ export async function applyAuthChoiceKimiWeb(
     await setKimiWebCookie({ cookie }, agentDir);
   }
 
-  return { config };
+  const nextConfig = await applyKimiWebConfig(config);
+  return { config: nextConfig };
 }

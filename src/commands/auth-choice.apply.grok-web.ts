@@ -1,5 +1,6 @@
 import { loginGrokWeb } from "../providers/grok-web-auth.js";
 import type { ApplyAuthChoiceParams, ApplyAuthChoiceResult } from "./auth-choice.apply.js";
+import { applyGrokWebConfig } from "./onboard-auth.config-core.js";
 import { setGrokWebCookie } from "./onboard-auth.credentials.js";
 import { openUrl } from "./onboard-helpers.js";
 
@@ -48,5 +49,6 @@ export async function applyAuthChoiceGrokWeb(
     await setGrokWebCookie({ cookie }, agentDir);
   }
 
-  return { config };
+  const nextConfig = await applyGrokWebConfig(config);
+  return { config: nextConfig };
 }

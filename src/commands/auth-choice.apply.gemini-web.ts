@@ -1,5 +1,6 @@
 import { loginGeminiWeb } from "../providers/gemini-web-auth.js";
 import type { ApplyAuthChoiceParams, ApplyAuthChoiceResult } from "./auth-choice.apply.js";
+import { applyGeminiWebConfig } from "./onboard-auth.config-core.js";
 import { setGeminiWebCookie } from "./onboard-auth.credentials.js";
 import { openUrl } from "./onboard-helpers.js";
 
@@ -48,5 +49,6 @@ export async function applyAuthChoiceGeminiWeb(
     await setGeminiWebCookie({ cookie }, agentDir);
   }
 
-  return { config };
+  const nextConfig = await applyGeminiWebConfig(config);
+  return { config: nextConfig };
 }

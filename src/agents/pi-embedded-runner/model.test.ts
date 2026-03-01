@@ -305,7 +305,7 @@ describe("resolveModel", () => {
       modelId: "glm-4.7",
       templateModel: buildForwardCompatTemplate({
         id: "glm-4.7",
-        name: "GLM-4.7",
+        name: "glm-4.7",
         provider: "zai",
         api: "openai-completions",
         baseUrl: "https://api.z.ai/api/paas/v4",

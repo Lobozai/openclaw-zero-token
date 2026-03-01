@@ -50,10 +50,11 @@ ps aux | grep "chrome.*9222" | grep -v grep
 3. **Claude**: https://claude.ai
 4. **Doubao**: https://www.doubao.com/chat/
 5. **ChatGPT**: https://chatgpt.com
-7. **Gemini**: https://gemini.google.com/app
-8. **Grok**: https://grok.com
-9. **Z**: https://chat.z.ai
-10. **Manus**: https://manus.im/app
+6. **Gemini**: https://gemini.google.com/app
+7. **Grok**: https://grok.com
+8. **GLM Web (智谱清言)**: https://chatglm.cn
+
+**注意**：Manus 使用 API Key 方式认证，不需要浏览器登录。API Key 获取地址：https://open.manus.im
 
 ---
 
@@ -112,7 +113,7 @@ http://127.0.0.1:3001/#token=62b791625fa441be036acd3c206b7e14e2bb13c803355823
 /models
 ```
 
-**预期结果**：应该看到 23 个模型
+**预期结果**：应该看到以下模型
 
 ```
 claude-web/claude-3-5-sonnet-20241022
@@ -133,9 +134,10 @@ gemini-web/gemini-pro
 gemini-web/gemini-ultra
 grok-web/grok-2
 grok-web/grok-1
-z-web/glm-4-plus
-z-web/glm-4-think
-manus-web/manus-1
+glm-web/glm-4-plus (GLM)
+glm-web/glm-4-think (GLM)
+manus-api/manus-1.6
+manus-api/manus-1.6-lite
 ```
 
 ---
@@ -143,20 +145,21 @@ manus-web/manus-1
 ### 步骤 8：测试对话
 
 **操作**：
-1. 在 Web UI 中选择一个模型（如 `chatgpt-web/gpt-4`）
+1. 在 Web UI 中选择一个模型（如 `claude-web/claude-3-5-sonnet-20241022`）
 2. 发送测试消息："你好，请介绍一下你自己"
 3. 检查是否能正常收到回复
 
 **对每个平台重复测试**：
 - ✅ claude-web
 - ✅ doubao-web
-- ⏳ chatgpt-web
-- ⏳ qwen-web
-- ⏳ kimi-web
+- ✅ chatgpt-web
+- ✅ qwen-web
+- ✅ kimi-web
 - ✅ gemini-web
 - ✅ grok-web
-- ✅ z-web
-- ⏳ manus-web
+- ✅ deepseek-web
+- ✅ glm-web (GLM)
+- ✅ manus-api (需要 API Key)
 
 ---
 

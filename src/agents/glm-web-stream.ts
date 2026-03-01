@@ -7,7 +7,7 @@ import {
 import {
   ZWebClientBrowser,
   type ZWebClientOptions,
-} from "../providers/z-web-client-browser.js";
+} from "../providers/glm-web-client-browser.js";
 import { stripForWebProvider } from "./prompt-sanitize.js";
 
 const conversationMap = new Map<string, string>();

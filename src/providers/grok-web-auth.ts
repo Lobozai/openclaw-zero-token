@@ -83,7 +83,7 @@ export async function loginGrokWeb(
 
     await page.waitForFunction(
       () => {
-        return document.cookie.includes("auth_token") || document.cookie.includes("ct0");
+        return document.cookie.includes("sso") || document.cookie.includes("_ga");
       },
       { timeout: 300000 },
     );

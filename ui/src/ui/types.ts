@@ -401,6 +401,8 @@ export type GatewaySessionRow = {
   totalTokens?: number;
   model?: string;
   modelProvider?: string;
+  modelOverride?: string;
+  providerOverride?: string;
   contextTokens?: number;
 };
 

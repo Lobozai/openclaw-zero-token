@@ -38,8 +38,7 @@ import { createQwenWebStreamFn } from "../../qwen-web-stream.js";
 import { createKimiWebStreamFn } from "../../kimi-web-stream.js";
 import { createGeminiWebStreamFn } from "../../gemini-web-stream.js";
 import { createGrokWebStreamFn } from "../../grok-web-stream.js";
-import { createZWebStreamFn } from "../../z-web-stream.js";
-import { createManusWebStreamFn } from "../../manus-web-stream.js";
+import { createZWebStreamFn } from "../../glm-web-stream.js";
 import { createManusApiStreamFn } from "../../manus-api-stream.js";
 import { DEFAULT_CONTEXT_TOKENS } from "../../defaults.js";
 import { resolveOpenClawDocsPath } from "../../docs-path.js";
@@ -669,12 +668,9 @@ export async function runEmbeddedAttempt(
       } else if (params.model.api === "grok-web") {
         const auth = (await params.authStorage.getApiKey("grok-web")) || "";
         activeSession.agent.streamFn = createGrokWebStreamFn(auth) as StreamFn;
-      } else if (params.model.api === "z-web") {
-        const auth = (await params.authStorage.getApiKey("z-web")) || "";
+      } else if (params.model.api === "glm-web") {
+        const auth = (await params.authStorage.getApiKey("glm-web")) || "";
         activeSession.agent.streamFn = createZWebStreamFn(auth) as StreamFn;
-      } else if (params.model.api === "manus-web") {
-        const auth = (await params.authStorage.getApiKey("manus-web")) || "";
-        activeSession.agent.streamFn = createManusWebStreamFn(auth) as StreamFn;
       } else if (params.model.api === "manus-api") {
         const apiKey = (await params.authStorage.getApiKey("manus-api")) || "";
         activeSession.agent.streamFn = createManusApiStreamFn(apiKey) as StreamFn;

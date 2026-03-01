@@ -58,8 +58,7 @@ pnpm ui:build   # 构建 Web UI
 
 | 平台 | 状态 |
 |------|------|
-| DeepSeek、千问、Kimi、Claude Web、豆包、ChatGPT Web、Grok Web、Manus API、**Gemini Web** | ✅ 已测试可用 |
-| Z、Manus Web | 待测试 |
+| DeepSeek、千问、Kimi、Claude Web、豆包、ChatGPT Web、Grok Web、GLM Web、Manus API、**Gemini Web** | ✅ 已测试可用 |
 
 ---
 
@@ -67,7 +66,7 @@ pnpm ui:build   # 构建 Web UI
 
 测试完成后，你将拥有：
 
-- ✅ 12 个可用的 Web 平台
+- ✅ 11 个可用的 Web 平台
 - ✅ 28+ 个可选的 AI 模型
 - ✅ 完全免费的 AI 对话服务
 - ✅ 统一的浏览器方案
@@ -123,22 +122,20 @@ Then visit: http://127.0.0.1:3001/#token=62b791625fa441be036acd3c206b7e14e2bb13c
 5. https://claude.ai  
 6. https://www.doubao.com/chat/  
 8. https://gemini.google.com/app  
-9. https://grok.com  
-10. https://chat.z.ai  
-11. https://manus.im/app
+9. https://grok.com
+10. https://chatglm.cn
 
 #### Test Status
 
 | Platform | Status |
 |----------|--------|
-| DeepSeek, Qwen, Kimi, Claude Web, Doubao, ChatGPT Web, Grok Web, Manus API, Gemini Web | ✅ Tested |
-| Z, Manus Web | Untested |
+| DeepSeek, Qwen, Kimi, Claude Web, Doubao, ChatGPT Web, Grok Web, GLM Web, Manus API, Gemini Web | ✅ Tested |
 
 #### Expected Results
 
 After testing, you will have:
 
-- ✅ 12 available Web platforms
+- ✅ 11 available Web platforms
 - ✅ 28+ selectable AI models
 - ✅ Completely free AI conversation service
 - ✅ Unified browser approach

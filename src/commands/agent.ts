@@ -16,10 +16,12 @@ import { loadModelCatalog } from "../agents/model-catalog.js";
 import { runWithModelFallback } from "../agents/model-fallback.js";
 import {
   buildAllowedModelSet,
+  buildModelAliasIndex,
   isCliProvider,
   modelKey,
   normalizeModelRef,
   resolveConfiguredModelRef,
+  resolveModelRefFromString,
   resolveThinkingDefault,
 } from "../agents/model-selection.js";
 import { runEmbeddedPiAgent } from "../agents/pi-embedded.js";
@@ -455,6 +457,24 @@ export async function agentCommand(
         model = normalizedStored.model;
       }
     }
+
+    // Apply explicit model override from opts.model (highest priority, e.g., from gateway HTTP endpoint)
+    if (opts.model) {
+      const aliasIndex = buildModelAliasIndex({
+        cfg,
+        defaultProvider: defaultProvider,
+      });
+      const resolved = resolveModelRefFromString({
+        raw: opts.model,
+        defaultProvider: defaultProvider,
+        aliasIndex,
+      });
+      if (resolved) {
+        provider = resolved.ref.provider;
+        model = resolved.ref.model;
+      }
+    }
+
     if (sessionEntry) {
       const authProfileId = sessionEntry.authProfileOverride;
       if (authProfileId) {

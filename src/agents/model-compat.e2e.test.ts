@@ -5,7 +5,7 @@ import { normalizeModelCompat } from "./model-compat.js";
 const baseModel = (): Model<Api> =>
   ({
     id: "glm-4.7",
-    name: "GLM-4.7",
+    name: "glm-4.7",
     api: "openai-completions",
     provider: "zai",
     baseUrl: "https://api.z.ai/api/coding/paas/v4",

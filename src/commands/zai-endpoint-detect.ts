@@ -139,7 +139,7 @@ export async function detectZaiEndpoint(params: {
         endpoint: candidate.endpoint,
         baseUrl: candidate.baseUrl,
         modelId: "glm-4.7",
-        note: "Coding Plan endpoint detected; GLM-5 is not available there. Defaulting to GLM-4.7.",
+        note: "Coding Plan endpoint detected; GLM-5 is not available there. Defaulting to glm-4.7.",
       };
     }
   }

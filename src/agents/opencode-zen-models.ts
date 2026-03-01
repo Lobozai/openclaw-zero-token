@@ -207,7 +207,7 @@ const MODEL_NAMES: Record<string, string> = {
   "gemini-3-pro": "Gemini 3 Pro",
   "gpt-5.1-codex-mini": "GPT-5.1 Codex Mini",
   "gpt-5.1": "GPT-5.1",
-  "glm-4.7": "GLM-4.7",
+  "glm-4.7": "glm-4.7",
   "gemini-3-flash": "Gemini 3 Flash",
   "gpt-5.1-codex-max": "GPT-5.1 Codex Max",
   "gpt-5.2": "GPT-5.2",

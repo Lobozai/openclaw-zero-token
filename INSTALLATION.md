@@ -4,10 +4,10 @@
 
 ### 必需软件
 
-1. **Node.js** (v18 或更高版本)
+1. **Node.js** (v22.12 或更高版本)
    ```bash
    node --version
-   # 应该显示 v18.x.x 或更高
+   # 应该显示 v22.12.x 或更高
    ```
 
 2. **npm** (通常随 Node.js 一起安装)
@@ -130,7 +130,7 @@ cat .openclaw-state/agents/main/agent/auth-profiles.json
 
 ## ✅ 安装完成检查清单
 
-- [ ] Node.js 已安装（v18+）
+- [ ] Node.js 已安装（v22.12+）
 - [ ] npm 已安装
 - [ ] 依赖已安装（`npm install`）
 - [ ] 代码已编译（`npm run build`）
@@ -167,7 +167,7 @@ npm install
 **A**: 检查 Node.js 版本：
 ```bash
 node --version
-# 必须是 v18 或更高
+# 必须是 v22.12 或更高
 
 # 如果版本太低，升级 Node.js
 ```

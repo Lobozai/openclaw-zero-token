@@ -170,7 +170,6 @@ if curl -s http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
   echo "正在打开各 Web 平台登录页（便于授权）..."
 
   WEB_URLS=(
-    "https://chat.deepseek.com"
     "https://claude.ai/new"
     "https://chatgpt.com"
     "https://www.doubao.com/chat/"
@@ -178,15 +177,14 @@ if curl -s http://127.0.0.1:9222/json/version > /dev/null 2>&1; then
     "https://www.kimi.com"
     "https://gemini.google.com/app"
     "https://grok.com"
-    "https://chat.z.ai"
-    "https://manus.im/app"
+    "https://chatglm.cn"
   )
   for url in "${WEB_URLS[@]}"; do
     "$CHROME_PATH" --remote-debugging-port=9222 --user-data-dir="$USER_DATA_DIR" "$url" > /dev/null 2>&1 &
     sleep 0.5
   done
 
-  echo "✓ 已打开: DeepSeek, Claude, ChatGPT, Doubao, Qwen, Kimi, Gemini, Grok, Z, Manus"
+  echo "✓ 已打开: Claude, ChatGPT, Doubao, Qwen, Kimi, Gemini, Grok, GLM（DeepSeek 在第 5 步单独登录）"
   echo ""
   echo "=========================================="
   echo "下一步操作："

@@ -1,5 +1,6 @@
 import { loginChatGPTWeb } from "../providers/chatgpt-web-auth.js";
 import type { ApplyAuthChoiceParams, ApplyAuthChoiceResult } from "./auth-choice.apply.js";
+import { applyChatGPTWebConfig } from "./onboard-auth.config-core.js";
 import { setChatGPTWebCookie } from "./onboard-auth.credentials.js";
 import { openUrl } from "./onboard-helpers.js";
 
@@ -91,6 +92,6 @@ export async function applyAuthChoiceChatGPTWeb(
     await setChatGPTWebCookie({ cookie: accessToken }, agentDir);
   }
 
-  // Return config without modification - ChatGPT Web doesn't need config changes
-  return { config };
+  const nextConfig = await applyChatGPTWebConfig(config);
+  return { config: nextConfig };
 }

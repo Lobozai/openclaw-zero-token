@@ -120,8 +120,18 @@ export async function loadModelCatalog(params?: {
               getAll: () => Array<DiscoveredModel>;
             };
       })(authStorage, join(agentDir, "models.json"));
+      // Get configured providers from config to filter models
+      const configuredProviders = new Set(
+        Object.keys(cfg.models?.providers ?? {}).map((p) => p.toLowerCase()),
+      );
+
       const entries = Array.isArray(registry) ? registry : registry.getAll();
       for (const entry of entries) {
+        // Filter: only include models from configured providers
+        const entryProvider = String(entry?.provider ?? "").trim().toLowerCase();
+        if (configuredProviders.size > 0 && !configuredProviders.has(entryProvider)) {
+          continue;
+        }
         const id = String(entry?.id ?? "").trim();
         if (!id) {
           continue;

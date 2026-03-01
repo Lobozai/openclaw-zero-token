@@ -27,6 +27,7 @@ export type SessionsProps = {
       thinkingLevel?: string | null;
       verboseLevel?: string | null;
       reasoningLevel?: string | null;
+      model?: string | null;
     },
   ) => void;
   onDelete: (key: string) => void;
@@ -193,6 +194,7 @@ export function renderSessions(props: SessionsProps) {
           <div>Key</div>
           <div>Label</div>
           <div>Kind</div>
+          <div>Model</div>
           <div>Updated</div>
           <div>Tokens</div>
           <div>Thinking</div>
@@ -259,6 +261,18 @@ function renderRow(
         />
       </div>
       <div>${row.kind}</div>
+      <div>
+        <input
+          .value=${row.modelOverride ?? row.model ?? ""}
+          ?disabled=${disabled}
+          placeholder="provider/model"
+          style="width: 140px;"
+          @change=${(e: Event) => {
+            const value = (e.target as HTMLInputElement).value.trim();
+            onPatch(row.key, { model: value || null });
+          }}
+        />
+      </div>
       <div>${updated}</div>
       <div>${formatSessionTokens(row)}</div>
       <div>

@@ -33,8 +33,7 @@ OpenClaw Zero Token is a fork of [OpenClaw](https://github.com/openclaw/openclaw
 | ChatGPT Web | ✅ **Tested** | GPT-4, GPT-4 Turbo |
 | Gemini Web | ✅ **Tested** | Gemini Pro, Gemini Ultra |
 | Grok Web | ✅ **Tested** | Grok 1, Grok 2 |
-| Z Web (智谱清言) | ✅ **Tested** | GLM-4-Plus, GLM-4-Think |
-| Manus Web | ✅ **Tested** | Manus 1 |
+| GLM Web (智谱清言) | ✅ **Tested** | glm-4-Plus, glm-4-Think |
 | Manus API | ✅ **Tested** | Manus 1.6, Manus 1.6 Lite (API key, free tier) |
 
 > **Note:** All web-based providers use browser automation (Playwright) for authentication and API access. Platforms marked **Tested** have been verified to work.

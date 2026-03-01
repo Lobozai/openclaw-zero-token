@@ -1,12 +1,13 @@
-import { loginZWeb } from "../providers/z-web-auth.js";
+import { loginZWeb } from "../providers/glm-web-auth.js";
 import type { ApplyAuthChoiceParams, ApplyAuthChoiceResult } from "./auth-choice.apply.js";
+import { applyGlmWebConfig } from "./onboard-auth.config-core.js";
 import { setZWebCookie } from "./onboard-auth.credentials.js";
 import { openUrl } from "./onboard-helpers.js";
 
 export async function applyAuthChoiceZWeb(
   params: ApplyAuthChoiceParams,
 ): Promise<ApplyAuthChoiceResult | null> {
-  if (params.authChoice !== "z-web") {
+  if (params.authChoice !== "glm-web") {
     return null;
   }
 
@@ -48,5 +49,6 @@ export async function applyAuthChoiceZWeb(
     await setZWebCookie({ cookie }, agentDir);
   }
 
-  return { config };
+  const nextConfig = await applyGlmWebConfig(config);
+  return { config: nextConfig };
 }
